@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class SquareController : MonoBehaviour
 {
-    [SerializeField] GameOverScreen gameover;
     Rigidbody2D rigidbody2d;
     float speed = 8f;
     float horizontal;

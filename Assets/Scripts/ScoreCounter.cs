@@ -6,18 +6,12 @@ using TMPro;
 public class ScoreCounter : MonoBehaviour
 {
     public TextMeshProUGUI scoretext;
-    public int score;
 
     // Start is called before the first frame update
-    void Start()
+
+    void Update()
     {
-        score = 0;
-        scoretext.text = "Score: " + score;
+        scoretext.text = "Score: " + GameManager.instance.score.ToString();
     }
 
-    public void UpdateScore()
-    {
-        score += 1;
-        scoretext.text = "Score: " + score;
-    }
 }

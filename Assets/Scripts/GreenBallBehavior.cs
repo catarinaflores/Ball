@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 
 public class GreenBallBehavior : Ball
 {
-    [SerializeField] ScoreCounter score;
     [SerializeField] GameObject redBall;
     [SerializeField] GameObject purpleBall;
 
@@ -21,7 +20,7 @@ public class GreenBallBehavior : Ball
     {
         if (collision.gameObject.tag == "Player")
         {
-            score.UpdateScore();
+            GameManager.instance.UpdateScore();
 
             transform.position = new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f));
 
