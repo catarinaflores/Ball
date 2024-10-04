@@ -4,12 +4,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CustomButton : MonoBehaviour, IPointerDownHandler
+public class QuitButton : MonoBehaviour, IPointerDownHandler
 {
-    [SerializeField] GameManager gameManager;
     public void OnPointerDown(PointerEventData eventData)
     {
-        gameManager.PlayGame();
+        Application.Quit(0);
     }
 
     // Start is called before the first frame update
