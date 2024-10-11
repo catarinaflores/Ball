@@ -9,6 +9,7 @@ public class PlayAgainButton : MonoBehaviour, IPointerDownHandler
 {
     public void OnPointerDown(PointerEventData eventData)
     {
+        GameManager.instance.score = 0;
         SceneManager.LoadScene("Level1");
     }
 
