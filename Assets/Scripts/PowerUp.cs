@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    public Vector2 newSize = new Vector2(0.5f, 0.5f);
+    public Vector2 newSize = new Vector2(0.25f, 0.25f);
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
