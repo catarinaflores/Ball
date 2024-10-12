@@ -865,6 +865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   timer: 0
+  powerUp: {fileID: 5029956305750757845, guid: 8d2f640e32e56434b967db3568c20e44, type: 3}
 --- !u!4 &1996812403
 Transform:
   m_ObjectHideFlags: 0

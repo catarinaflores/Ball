@@ -153,8 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1096617972}
-  timeToSpawn: 0
-  powerUp: {fileID: 5029956305750757845, guid: 8d2f640e32e56434b967db3568c20e44, type: 3}
+  timeToSpawn: 10
 --- !u!4 &338705441
 Transform:
   m_ObjectHideFlags: 0

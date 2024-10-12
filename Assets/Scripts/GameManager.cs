@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public int timer;
     public static GameManager instance;
 
+    [SerializeField] GameObject powerUp;
+
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,15 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Level1");
     }
+
+    public void SpawnPowerUp()
+    {
+        Vector2 spawnPos = new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f));
+        Instantiate(powerUp, spawnPos, Quaternion.identity);
+
+        Debug.Log("Power up spawned by Game Manager.");
+    }
+
     // Update is called once per frame
     void Update()
     {

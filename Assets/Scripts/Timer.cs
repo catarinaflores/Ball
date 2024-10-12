@@ -10,7 +10,7 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI timerText;
     public float timeToSpawn = 10f;
 
-    [SerializeField] GameObject powerUp;
+    // [SerializeField] GameObject powerUp;
 
     private bool objectSpawned = false; // To ensure the object is spawned only once
     // private float spawnThreshold = 0.1f;
@@ -18,6 +18,8 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Start method is called.");
+        // StartCoroutine(SimpleTestCoroutine());
         StartCoroutine(SpawnPowerUpAfterDelay());
     }
 
@@ -51,11 +53,21 @@ public class Timer : MonoBehaviour
         Debug.Log("Coroutine started, waiting for " + timeToSpawn + " seconds");
         yield return new WaitForSeconds(timeToSpawn);
 
-        Vector2 spawnPos = new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f));
-        Instantiate(powerUp, spawnPos, Quaternion.identity);
+        if (GameManager.instance != null && !objectSpawned)
+        {
+            GameManager.instance.SpawnPowerUp();
+            objectSpawned = true;
+        }
 
         objectSpawned = true;
 
         Debug.Log("Power Up spawned after 10 seconds.");
     }
+
+    /* IEnumerator SimpleTestCoroutine()
+    {
+        Debug.Log("Coroutine started, waiting for 10 seconds.");
+        yield return new WaitForSeconds(10f);
+        Debug.Log("Coroutine finished waiting.");
+    }*/
 }
