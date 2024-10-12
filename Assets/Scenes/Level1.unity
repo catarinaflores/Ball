@@ -153,6 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1096617972}
+  timeToSpawn: 0
+  powerUp: {fileID: 5029956305750757845, guid: 8d2f640e32e56434b967db3568c20e44, type: 3}
 --- !u!4 &338705441
 Transform:
   m_ObjectHideFlags: 0
@@ -986,7 +988,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a162a78a69a2d1b41a270c260e3af285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameover: {fileID: 0}
 --- !u!212 &1189636223
 SpriteRenderer:
   m_ObjectHideFlags: 0
