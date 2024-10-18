@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,10 @@ public class GameManager : MonoBehaviour
     public int score;
     public int timer;
     public static GameManager instance;
+
+    public delegate void EnemyDelegate();
+    public static event EnemyDelegate OnShrinkEnemyBalls;
+    public static event EnemyDelegate OnRestoreEnemyBalls;
 
     [SerializeField] GameObject powerUp;
 
@@ -44,6 +49,19 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Power up spawned by Game Manager.");
     }
+
+
+    public void ShrinkEnemyBalls()
+    {
+        OnShrinkEnemyBalls?.Invoke();
+        Invoke("RestoreEnemyBalls", 10f);
+    }
+
+    private void RestoreEnemyBalls()
+    {
+        OnRestoreEnemyBalls?.Invoke();
+    }
+
 
     // Update is called once per frame
     void Update()

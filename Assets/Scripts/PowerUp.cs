@@ -5,30 +5,24 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour
 {
     public Vector2 newSize = new Vector2(0.25f, 0.25f);
-    private void OnCollisionEnter2D(Collision2D collision)
+    public float effectDuration = 10f;
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            RedBallBehavior redBall = FindObjectOfType<RedBallBehavior>();
-
-            if (redBall != null)
-            {
-                StartCoroutine(ChangeBallSizeTemporarily(redBall));
-                Debug.Log("Power up collected, red ball size changed.");
-            }
-
+            GameManager.instance.ShrinkEnemyBalls();
             Destroy(gameObject);
         }
     }
 
-    private IEnumerator ChangeBallSizeTemporarily(RedBallBehavior redBall)
+    /* private IEnumerator ChangeBallSizeTemporarily(RedBallBehavior redBall)
     {
-        Vector2 originalSize = redBall.transform.localScale;
+        Vector2 originalSize = new Vector2(redBall.transform.localScale.x, redBall.transform.localScale.y);
 
         redBall.SetBallSize(newSize);
 
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(effectDuration);
 
-        redBall.SetBallSize(originalSize);
-    }
+        redBall.SetBallSize(new Vector2(originalSize.x, originalSize.y));
+    }*/
 }

@@ -1,11 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Ball : MonoBehaviour
 {
     public float speed = 5f;
     public Rigidbody2D rb;
+    private Vector2 originalScale;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +18,11 @@ public class Ball : MonoBehaviour
         RandomDirection();
 
         InitBall();
+
+        originalScale = transform.localScale;
+
+        GameManager.OnShrinkEnemyBalls += Shrink;
+        GameManager.OnRestoreEnemyBalls += GrowBack;
     }
 
     public virtual void InitBall()
@@ -36,5 +44,27 @@ public class Ball : MonoBehaviour
         Vector2 randomDirection = new Vector2(randomX, randomY).normalized;
 
         rb.velocity = randomDirection * speed;
+    }
+
+    void OnDestroy()
+    {
+        GameManager.OnShrinkEnemyBalls -= Shrink;
+        GameManager.OnRestoreEnemyBalls -= GrowBack;
+    }
+
+    public void Shrink()
+    {
+        if (gameObject.CompareTag("Enemy"))
+        {
+            transform.localScale = originalScale * 0.5f;
+        }
+    }
+
+    public void GrowBack()
+    {
+        if (gameObject.CompareTag("Enemy"))
+        {
+            transform.localScale = originalScale;
+        }
     }
 }
