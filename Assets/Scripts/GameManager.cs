@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public int score;
+    public int highScore;
     public int timer;
     public static GameManager instance;
 
@@ -30,11 +31,20 @@ public class GameManager : MonoBehaviour
             Destroy (gameObject);
         }
         score = 0;
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
     }
 
     public void UpdateScore()
     {
         score += 1;
+
+        // Check if the new score is higher than the saved high score
+        if (score > highScore)
+        {
+            highScore = score; // Update high score
+            PlayerPrefs.SetInt("HighScore", highScore); // Save the new high score
+            PlayerPrefs.Save();
+        }
     }
 
     public void PlayGame()
@@ -60,12 +70,5 @@ public class GameManager : MonoBehaviour
     private void RestoreEnemyBalls()
     {
         OnRestoreEnemyBalls?.Invoke();
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
