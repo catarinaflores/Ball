@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7026606113042519769}
   - component: {fileID: 7656867267331720628}
   - component: {fileID: 5750545388156315465}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RedCircle
   m_TagString: Enemy
   m_Icon: {fileID: 0}
